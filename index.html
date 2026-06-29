@@ -1,0 +1,2272 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>课件原题 + 作业复习题集</title>
+  <style>
+    :root {
+      --bg: #f7f5f0;
+      --paper: #ffffff;
+      --ink: #172026;
+      --muted: #5e6b73;
+      --line: #d8ddd6;
+      --accent: #0f766e;
+      --accent2: #8b4a2f;
+      --soft: #eef6f4;
+      --answer: #fff8e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.68;
+    }
+    main { width: min(1180px, calc(100vw - 28px)); margin: 0 auto; padding: 26px 0 72px; }
+    header { border-bottom: 2px solid #21313b; padding: 12px 0 18px; }
+    h1 { margin: 0 0 8px; font-size: clamp(26px, 4vw, 36px); line-height: 1.15; letter-spacing: 0; }
+    h2 { margin: 30px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 23px; }
+    h2 small { color: var(--muted); font-weight: 400; font-size: 14px; }
+    h3 { margin: 0; font-size: 17px; line-height: 1.35; }
+    .lede { margin: 0; color: var(--muted); max-width: 920px; }
+    .summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 0;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--paper);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1fr 170px 210px 210px auto auto auto;
+      gap: 8px;
+      align-items: center;
+      padding: 12px 0;
+      background: rgba(247,245,240,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+    input, select, button {
+      min-height: 40px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 7px 10px;
+      background: var(--paper);
+      color: var(--ink);
+      font: inherit;
+    }
+    button { cursor: pointer; white-space: nowrap; }
+    button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .count { color: var(--muted); font-size: 13px; text-align: right; min-width: 72px; }
+    .qcard {
+      margin: 0 0 13px;
+      padding: 15px 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .qhead {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .meta { color: var(--muted); font-size: 12px; margin: 5px 0 0; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 5px; min-width: 220px; }
+    .tags span {
+      border: 1px solid #d6ddd8;
+      background: #f2f6f3;
+      color: #405158;
+      border-radius: 999px;
+      font-size: 12px;
+      padding: 2px 8px;
+    }
+    .question-text {
+      overflow-wrap: anywhere;
+      margin: 12px 0 0;
+      padding: 12px;
+      border: 1px solid #edf0ed;
+      border-radius: 8px;
+      background: #fbfcfb;
+      font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.72;
+    }
+    sup, sub { font-size: .76em; line-height: 0; }
+    .overline {
+      display: inline-block;
+      text-decoration-line: overline;
+      text-decoration-thickness: 1px;
+      text-decoration-skip-ink: none;
+      padding-top: .02em;
+    }
+    .math-int {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      grid-template-rows: .86em .86em;
+      column-gap: 1px;
+      align-items: center;
+      vertical-align: -0.32em;
+      margin: 0 4px;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .int-symbol {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      font-family: "Cambria Math", "STIX Two Math", "Times New Roman", serif;
+      font-size: 1.92em;
+      line-height: .9;
+    }
+    .int-upper, .int-lower {
+      display: block;
+      min-width: max-content;
+      font-size: .68em;
+      line-height: 1;
+      text-align: left;
+      white-space: nowrap;
+    }
+    .int-upper { grid-column: 2; grid-row: 1; align-self: end; }
+    .int-lower { grid-column: 2; grid-row: 2; align-self: start; }
+    details.answer {
+      margin: 12px 0 0;
+      border: 1px solid #ead9aa;
+      border-radius: 8px;
+      background: var(--answer);
+      padding: 10px 12px;
+    }
+    details.answer summary { cursor: pointer; font-weight: 700; color: #553817; }
+    details.source-shot {
+      margin: 12px 0 0;
+      border: 1px solid #d7e1de;
+      border-radius: 8px;
+      background: #f7faf9;
+      padding: 10px 12px;
+    }
+    details.source-shot summary { cursor: pointer; font-weight: 700; color: #34504b; }
+    .answer-body { margin-top: 8px; }
+    .answer-body p { margin: 7px 0; }
+    .answer-body ol { margin: 8px 0 0 22px; padding: 0; }
+    .answer-body li { margin: 5px 0; }
+    .answer-note {
+      border-left: 4px solid var(--accent2);
+      padding-left: 10px;
+      color: #6b3c24;
+    }
+    figure { margin: 12px 0 0; }
+    img { max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+    figcaption { color: var(--muted); font-size: 12px; margin-top: 4px; }
+    .hidden { display: none !important; }
+    @media (max-width: 980px) {
+      .toolbar { grid-template-columns: 1fr 1fr; }
+      .count { text-align: left; }
+      .qhead { display: block; }
+      .tags { justify-content: flex-start; min-width: 0; margin-top: 8px; }
+    }
+    @media print {
+      body { background: #fff; }
+      main { width: 100%; padding: 0; }
+      .toolbar { display: none; }
+      .qcard { break-inside: avoid; }
+      details.answer { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>课件原题 + 作业复习题集</h1>
+    <p class="lede">只整理课件中的例题、练习、习题页和三份作业原题；每题下方都有可展开/收起的答案解析。部分课件公式由 PDF 文本层抽取，遇到表格或复杂公式时以来源 PDF 页为准核对。</p>
+    <div class="summary">
+      <span class="pill">课件原题 59 题</span>
+      <span class="pill">作业原题 11 题</span>
+      <span class="pill">总题量 70 题</span>
+      <span class="pill">UTF-8 正常编码</span>
+    </div>
+  </header>
+  <section class="toolbar">
+    <input id="search" type="search" placeholder="搜索题干、答案、章节、来源">
+    <select id="kind">
+      <option value="">全部来源</option>
+      <option value="course">课件原题</option>
+      <option value="homework">作业原题</option>
+    </select>
+    <select id="chapter">
+      <option value="">全部章节/作业</option>
+      <option value="第一章 随机事件与概率">第一章 随机事件与概率</option>
+<option value="第二章 随机变量及其分布">第二章 随机变量及其分布</option>
+<option value="第三章 二维随机变量及其分布">第三章 二维随机变量及其分布</option>
+<option value="第四章 随机变量的数字特征">第四章 随机变量的数字特征</option>
+<option value="第五章 样本及抽样分布">第五章 样本及抽样分布</option>
+<option value="第六章 参数估计">第六章 参数估计</option>
+<option value="作业一">作业一</option>
+<option value="作业二">作业二</option>
+<option value="作业三">作业三</option>
+    </select>
+    <select id="skill">
+      <option value="">全部题型</option>
+      <option value="不相关与不独立">不相关与不独立</option>
+<option value="全概率与贝叶斯">全概率与贝叶斯</option>
+<option value="分布函数/密度积分">分布函数/密度积分</option>
+<option value="密度与分布函数">密度与分布函数</option>
+<option value="常见分布识别">常见分布识别</option>
+<option value="抽样分布">抽样分布</option>
+<option value="数字特征计算">数字特征计算</option>
+<option value="文字转集合/样本空间">文字转集合/样本空间</option>
+<option value="方差假设检验">方差假设检验</option>
+<option value="条件概率/贝叶斯">条件概率/贝叶斯</option>
+<option value="概念辨析/计算">概念辨析/计算</option>
+<option value="概率性质与条件概率">概率性质与条件概率</option>
+<option value="正态分布应用">正态分布应用</option>
+<option value="正态总体均值置信区间">正态总体均值置信区间</option>
+<option value="独立性/二项模型">独立性/二项模型</option>
+<option value="矩估计与极大似然估计">矩估计与极大似然估计</option>
+<option value="线性组合的期望与方差">线性组合的期望与方差</option>
+<option value="联合分布/边缘分布">联合分布/边缘分布</option>
+<option value="联合分布列">联合分布列</option>
+<option value="随机变量函数的期望">随机变量函数的期望</option>
+    </select>
+    <button class="primary" id="openAnswers" type="button">展开答案</button>
+    <button id="closeAnswers" type="button">收起答案</button>
+    <span class="count" id="count"></span>
+  </section>
+  <section class="chapter" id="第一章 随机事件与概率"><h2>第一章 随机事件与概率 <small>25 题</small></h2>
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q003 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.1 随机事件及其运算.pdf - page 16</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">写出下面随机事件的样本空间：<br>（1）袋中有5只球，其中3只白球2只黑球，从袋中任意取一球，观察其颜色；<br>（2）从（1）的袋中不放回任意取两次球（每次取出一个），观察其颜色；<br>（3）从（1）的袋中不放回任意取3只球，记录取到的黑球个数；<br>（4）生产产品直到有10只正品为止，记录生产产品的总件数；<br>（5）10件产品中有2件是次品，每次从其中取一件，取后不放回，直到2件次品都取出为止，记录抽取的次数；<br>（6）掷两颗骰子，观察出现的点数；<br>（7）掷两颗骰子，观察出现的点数之和。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>见各小题样本空间。</p>
+        <p><strong>解析：</strong>样本空间分别按观察对象列出。</p>
+        <ol><li>（1）Ω={白, 黑}。</li><li>（2）若记录顺序，Ω={白白, 白黑, 黑白, 黑黑}，但实际抽样中黑黑可发生，因为有 2 只黑球。</li><li>（3）抽 3 只时黑球个数只能是 0,1,2，所以 Ω={0,1,2}。</li><li>（4）总件数至少为 10，所以 Ω={10,11,12,...}。</li><li>（5）抽到第 2 件次品为止，次数可能为 2,3,...,10。</li><li>（6）Ω={(i,j): i,j=1,...,6}。</li><li>（7）点数和 Ω={2,3,...,12}。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q007 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.1 随机事件及其运算.pdf - page 30</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">甲、乙、丙三位射手向同一目标各射击一次，设 A、B、C 分别代表甲、乙、丙命中目标事件。<br>（1）用 A、B、C 表示下列事件：①目标被击中，即至少有一人击中目标；②目标被击中一次。<br>（2）用文字叙述下列事件：①AB+AC+BC；②A+B；③AB。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>至少击中 A∪B∪C；击中一次 A <span class="overline">B</span> <span class="overline">C</span> ∪ <span class="overline">A</span> B <span class="overline">C</span> ∪ <span class="overline">A</span> <span class="overline">B</span> C。</p>
+        <p><strong>解析：</strong>把“至少、恰好、同时、不发生”翻译成集合运算。</p>
+        <ol><li>至少一人击中：A∪B∪C。</li><li>恰好一人击中：A <span class="overline">B</span> <span class="overline">C</span> ∪ <span class="overline">A</span> B <span class="overline">C</span> ∪ <span class="overline">A</span> <span class="overline">B</span> C。</li><li>AB+AC+BC：至少有两人击中。</li><li>A+B：甲或乙至少一人击中。</li><li>AB：甲乙都击中。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q008 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.1 随机事件及其运算.pdf - page 31</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">设有 A、B、C 三个事件，写出如下事件的表达式。<br>（1）只有 A 发生；（2）B 和 C 都发生，但 A 不发生；<br>（3）至少有一个事件发生；（4）至少有两个事件发生；<br>（5）三个事件都发生；（6）没有事件发生；<br>（7）最多一个事件发生；（8）最多两个事件发生；<br>（9）恰好两个事件发生；（10）最多三个事件发生。<br>思考：A∪C 表示什么含义？</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>见解析逐项表达式。</p>
+        <p><strong>解析：</strong>逐项用 A、B、C 及其补事件表示。</p>
+        <ol><li>只有 A：A <span class="overline">B</span> <span class="overline">C</span>。</li><li>B 和 C 发生但 A 不发生：<span class="overline">A</span>BC。</li><li>至少一个：A∪B∪C。</li><li>至少两个：AB∪AC∪BC。</li><li>三个都发生：ABC。</li><li>没有事件发生：<span class="overline">A</span><span class="overline">B</span><span class="overline">C</span>。</li><li>最多一个：<span class="overline">A</span><span class="overline">B</span><span class="overline">C</span> ∪ A <span class="overline">B</span> <span class="overline">C</span> ∪ <span class="overline">A</span>B <span class="overline">C</span> ∪ <span class="overline">A</span><span class="overline">B</span>C。</li><li>最多两个：(<span class="overline">ABC</span>)。</li><li>恰好两个：AB <span class="overline">C</span> ∪ A C <span class="overline">B</span> ∪ BC <span class="overline">A</span>。</li><li>最多三个：必然事件 Ω。A∪C 表示 A 或 C 至少一个发生。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q009 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.2 随机事件的概率.pdf - page 6</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">（1）设事件 A 与 B 的概率分别为 1/2 和 1/3，试求下列三种情况下 P(A-B) 的值：①AB=∅；②B⊂A；③P(AB)=1/4。<br>（2）已知 P(A)=0.5，P(B)=0.4，P(A-B)=0.3，求 P(<span class="overline">A</span>∪<span class="overline">B</span>) 和 P(A∪<span class="overline">B</span>)。<br>（3）设 A、B、C 为三个事件，P(A)=P(B)=P(C)=1/4，P(AB)=P(BC)=1/8，P(AC)=0，求 A、B、C 都不发生的概率。<br>（4）已知 A、B 满足 P(AB)=P(<span class="overline">A</span>∩<span class="overline">B</span>)，且 P(A)=0.4，求 P(B)。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>（1）1/2，1/6，1/4；（2）0.8，0.8；（3）1/2；（4）0.6。</p>
+        <p><strong>解析：</strong>用 P(A-B)=P(A)-P(AB)、补事件公式和加法公式逐项计算。</p>
+        <ol><li>（1）①AB=∅：P(A-B)=1/2；②B⊂A：P(A-B)=1/2-1/3=1/6；③P(AB)=1/4：P(A-B)=1/2-1/4=1/4。</li><li>（2）P(AB)=P(A)-P(A-B)=0.2；P(<span class="overline">A</span>∪<span class="overline">B</span>)=1-P(AB)=0.8；P(A∪<span class="overline">B</span>)=1-P(<span class="overline">A</span>∩B)=1-(0.4-0.2)=0.8。</li><li>（3）P(A∪B∪C)=3/4-1/8-1/8-0=1/2，所以三个都不发生的概率为 1/2。</li><li>（4）由 P(AB)=P(<span class="overline">A</span>∩<span class="overline">B</span>)=1-P(A)-P(B)+P(AB)，得 P(B)=0.6。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q010 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.2 随机事件的概率.pdf - page 7</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">（1）设事件 A、B、C 是三个随机事件，且 P(A)=P(B)=P(C)=1/4，P(AC)=1/8，P(AB)=P(BC)=0，求：A、B、C 中至少有一个发生的概率；A、B、C 都发生的概率；A、B、C 都不发生的概率。<br>（2）若 A⊃B，A⊃C，P(A)=0.9，P(<span class="overline">B</span>∪<span class="overline">C</span>)=0.8，求 P(A-BC)。<br>（3）设两个事件 A、B 的概率为 1/3 和 1/2，试求三种情况下 P(<span class="overline">A</span>∩B) 的值：①A 与 B 互斥；②A⊂B；③P(AB)=1/8。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>（1）5/8，0，3/8；（2）0.7；（3）1/2，1/6，3/8。</p>
+        <p><strong>解析：</strong>仍用加法公式、补事件和交集关系。</p>
+        <ol><li>（1）P(A∪B∪C)=3/4-1/8=5/8；因 P(AB)=0，所以 P(ABC)=0；三个都不发生为 1-5/8=3/8。</li><li>（2）P(<span class="overline">B</span>∪<span class="overline">C</span>)=0.8，所以 P(BC)=0.2；又 BC⊂A，P(A-BC)=P(A)-P(BC)=0.7。</li><li>（3）P(<span class="overline">A</span>∩B)=P(B)-P(AB)：互斥时为 1/2；A⊂B 时为 1/2-1/3=1/6；P(AB)=1/8 时为 3/8。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q011 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 3</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">将一枚硬币掷3次（正面：H；反面：T）。<br>（1）设事件 A<sub>1</sub> 为“恰有一次出现正面”，求 P(A<sub>1</sub>)。<br>（2）设事件 A<sub>2</sub> 为“至少有一次出现正面”，求 P(A<sub>2</sub>)。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>P(A<sub>1</sub>)=3/8，P(A<sub>2</sub>)=7/8。</p>
+        <p><strong>解析：</strong>三次掷硬币共有 8 个等可能结果。</p>
+        <ol><li>恰有一次正面：HTT、THT、TTH，共 3 个，P=3/8。</li><li>至少一次正面：用补事件，全反面 TTT 的概率为 1/8，所以 P=1-1/8=7/8。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q014 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 7</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">设有6个白球和4个红球混合后放入袋中，从这10个球中任取5个。<br>（1）在有放回情况下，求这5个球中恰好有3个白球的概率。<br>（2）在不放回情况下，求这5个球中恰好有3个白球的概率。<br>（3）在不放回情况下，求第3个球为白球的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>216/625；10/21；3/5。</p>
+        <p><strong>解析：</strong>有放回用二项模型，无放回用组合超几何模型。</p>
+        <ol><li>（1）C(5,3)(6/10)<sup>3</sup>(4/10)<sup>2</sup>=216/625。</li><li>（2）C(6,3)C(4,2)/C(10,5)=10/21。</li><li>（3）对称性：每次抽到白球概率都等于白球比例 6/10=3/5。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q015 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 9</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">从一批由5件正品、5件次品组成的产品中，不放回地任意取出3件，求其中恰有1件次品的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>5/12。</p>
+        <p><strong>解析：</strong>不放回抽样，用超几何分布。</p>
+        <ol><li>总取法 C(10,3)。</li><li>恰有 1 件次品：从 5 件次品中取 1 件，从 5 件正品中取 2 件。</li><li>P=C(5,1)C(5,2)/C(10,3)=50/120=5/12。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q016 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 10</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">100件产品中有8件次品。<br>（1）不放回取10次，每次1件，求恰好3次取到次品的概率。<br>（2）有放回取10次，每次1件，求恰好3次取到次品的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>C(8,3)C(92,7)/C(100,10)；C(10,3)(0.08)<sup>3</sup>(0.92)<sup>7</sup>。</p>
+        <p><strong>解析：</strong>不放回是超几何模型，有放回是二项模型。</p>
+        <ol><li>（1）不放回：P=C(8,3)C(92,7)/C(100,10)。</li><li>（2）有放回：P=C(10,3)(0.08)<sup>3</sup>(0.92)<sup>7</sup>。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="抽样分布">
+      <div class="qhead">
+        <div>
+          <h3>Q017 抽样分布</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 11</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>抽样分布</span>
+        </div>
+      </div>
+      <div class="question-text">已知10件产品中有2件次品，从中随机取2次，每次取1件，不放回抽样，求：<br>（1）2只都是正品的概率；<br>（2）1只正品、1只次品的概率；<br>（3）2只都是次品的概率；<br>（4）第二次取出的是次品的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>28/45；16/45；1/45；1/5。</p>
+        <p><strong>解析：</strong>10 件中 8 正 2 次，不放回取 2 次。</p>
+        <ol><li>两只正品：C(8,2)/C(10,2)=28/45。</li><li>一正一次：C(8,1)C(2,1)/C(10,2)=16/45。</li><li>两只次品：C(2,2)/C(10,2)=1/45。</li><li>第二次为次品按对称性等于次品比例 2/10=1/5。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q018 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 12</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">设有15个人想去看电影，但只有7张电影票，故抽签决定谁去看电影。求第5个人抽到电影票的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>7/15。</p>
+        <p><strong>解析：</strong>抽签公平，指定某个人抽中好签的概率等于好签比例。</p>
+        <ol><li>第 5 个人与其他人对称，抽到电影票概率为 7/15。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q019 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 13</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">将 n 个人随机分到 N 个房间中（n≤N），每个人分到哪个房间是等可能的，且每个房间可容纳的人数没有限制。求：<br>（1）某指定的一个房间恰有 m（m≤n）个人的概率；<br>（2）每两个人都不在同一个房间的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>C(n,m)(1/N)<sup>m</sup>(1-1/N)<sup>n-m</sup>；A(N,n)/N<sup>n</sup>。</p>
+        <p><strong>解析：</strong>每个人独立等可能进入 N 个房间。</p>
+        <ol><li>指定房间恰有 m 人：C(n,m)(1/N)<sup>m</sup>(1-1/N)<sup>n-m</sup>。</li><li>每两个人都不在同一房间：N(N-1)...(N-n+1)/N<sup>n</sup>。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q020 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 14</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">求 m 个人中至少有两个人生日相同的概率（m≤365）。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>1 - 365·364·...·(365-m+1)/365<sup>m</sup>。</p>
+        <p><strong>解析：</strong>生日问题用补事件。</p>
+        <ol><li>没有两人生日相同的概率为 365·364·...·(365-m+1)/365<sup>m</sup>。</li><li>至少两人生日相同 = 1 - 上式。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q021 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.3 古典概型与几何概型.pdf - page 16</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">（1）高校 A 两个校区之间每30分钟发一趟班车，求等车时间不超过20分钟的概率。<br>（2）在一单位圆内随机投掷一点 M，求该点到原点距离小于 1/3 的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>2/3；1/9。</p>
+        <p><strong>解析：</strong>几何概型用长度或面积比例。</p>
+        <ol><li>等车时间在 [0,30] 均匀，P(T≤20)=20/30=2/3。</li><li>单位圆内距离原点小于 1/3 的面积比为 π(1/3)<sup>2</sup>/π=1/9。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q022 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.4 条件概率.pdf - page 2</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">设10件产品中有5件不合格品，5件不合格品中有3件次品、2件废品。现从10件产品中任取1件，求：<br>（1）取得废品的概率；<br>（2）已知取到的是不合格品，则它是废品的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>1/5；2/5。</p>
+        <p><strong>解析：</strong>直接概率和条件概率。</p>
+        <ol><li>废品共 2 件，总数 10 件，P(废品)=2/10=1/5。</li><li>已知不合格品共 5 件，其中废品 2 件，P(废品|不合格)=2/5。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q023 概念辨析/计算</h3>
+          <p class="meta">第一章 随机事件与概率/1.4 条件概率.pdf - page 5</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">已知 P(A)=0.5, P(B)=0.4, P(A|<span class="overline">B</span>)=0.6，求 P(AB)。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>P(AB)=0.14。</p>
+        <p><strong>解析：</strong>由条件概率先求 A 与 B 的补事件同时发生的概率。</p>
+        <ol><li>P(<span class="overline">B</span>)=1-P(B)=0.6。</li><li>P(A∩<span class="overline">B</span>)=P(A|<span class="overline">B</span>)P(<span class="overline">B</span>)=0.6×0.6=0.36。</li><li>P(AB)=P(A)-P(A∩<span class="overline">B</span>)=0.5-0.36=0.14。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="条件概率/贝叶斯">
+      <div class="qhead">
+        <div>
+          <h3>Q024 条件概率/贝叶斯</h3>
+          <p class="meta">第一章 随机事件与概率/1.4 条件概率.pdf - page 7</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>条件概率/贝叶斯</span>
+        </div>
+      </div>
+      <div class="question-text">某电子设备制造厂所用元件由三家元件制造厂提供。三家工厂次品率和供货份额分别为：1厂 0.02、0.15；2厂 0.01、0.80；3厂 0.03、0.05。设三家工厂产品在仓库中均匀混合且无区别标志。求：随机取一只元件，它是次品的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>0.0125。</p>
+        <p><strong>解析：</strong>全概率公式。</p>
+        <ol><li>P(次品)=0.15×0.02+0.80×0.01+0.05×0.03。</li><li>计算得 0.003+0.008+0.0015=0.0125。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="条件概率/贝叶斯">
+      <div class="qhead">
+        <div>
+          <h3>Q025 条件概率/贝叶斯</h3>
+          <p class="meta">第一章 随机事件与概率/1.4 条件概率.pdf - page 9</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>条件概率/贝叶斯</span>
+        </div>
+      </div>
+      <div class="question-text">沿用上一题三家元件制造厂的数据。随机取一只元件，若已知它是次品，问它最可能来自哪家工厂？</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>来自第 2 家工厂的概率最大，为 0.64。</p>
+        <p><strong>解析：</strong>贝叶斯公式比较三个来源的后验概率。</p>
+        <ol><li>分母 P(次品)=0.0125。</li><li>厂 1：0.15×0.02/0.0125=0.24。</li><li>厂 2：0.80×0.01/0.0125=0.64。</li><li>厂 3：0.05×0.03/0.0125=0.12。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="条件概率/贝叶斯">
+      <div class="qhead">
+        <div>
+          <h3>Q026 条件概率/贝叶斯</h3>
+          <p class="meta">第一章 随机事件与概率/1.4 条件概率.pdf - page 11</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>条件概率/贝叶斯</span>
+        </div>
+      </div>
+      <div class="question-text">当机器调整良好时，产品合格率为98%；机器发生故障时，产品合格率为55%。每天早上机器开动时，机器调整良好的概率为95%。求：已知某日早上第一件产品为合格品时，机器调整良好的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>约 0.9713。</p>
+        <p><strong>解析：</strong>已知第一件合格，反推机器调整良好的概率。</p>
+        <ol><li>设 G=机器良好，A=产品合格。</li><li>P(A)=0.95×0.98+0.05×0.55=0.9585。</li><li>P(G|A)=0.95×0.98/0.9585≈0.9713。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="条件概率/贝叶斯">
+      <div class="qhead">
+        <div>
+          <h3>Q027 条件概率/贝叶斯</h3>
+          <p class="meta">第一章 随机事件与概率/1.4 条件概率.pdf - page 12</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>条件概率/贝叶斯</span>
+        </div>
+      </div>
+      <div class="question-text">某零件由甲、乙、丙三家供应商提供，供应份额分别为1/2、1/4、1/4，次品率分别为2%、2%、4%。求：<br>（1）随机抽一件零件为次品的概率；<br>（2）已知抽到的是次品，它来自甲供应商的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>0.025；0.4。</p>
+        <p><strong>解析：</strong>先算抽到次品的总概率，再算来自甲且为次品的比例。</p>
+        <ol><li>P(次品)=1/2×0.02+1/4×0.02+1/4×0.04=0.025。</li><li>P(甲|次品)=0.5×0.02/0.025=0.4。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q030 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.5 事件的相互独立性.pdf - page 5</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">掷一均匀硬币两次，记 A<sub>1</sub>={第一次正面朝上}，A<sub>2</sub>={第二次反面朝上}，A<sub>3</sub>={正反面朝上各一次}。判断 A<sub>1</sub>、A<sub>2</sub>、A<sub>3</sub> 是否相互独立？是否两两相互独立？</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>两两相互独立，但不相互独立。</p>
+        <p><strong>解析：</strong>逐项验证概率乘法关系。</p>
+        <ol><li>样本空间为 {HH,HT,TH,TT}，P(A<sub>1</sub>)=P(A<sub>2</sub>)=P(A<sub>3</sub>)=1/2。</li><li>任意两个事件的交概率均为 1/4，等于对应概率乘积，所以两两相互独立。</li><li>A<sub>1</sub>∩A<sub>2</sub>∩A<sub>3</sub>={HT}，概率为 1/4，不等于 (1/2)<sup>3</sup>=1/8，所以三者不相互独立。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q031 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.5 事件的相互独立性.pdf - page 6</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">设事件 A、B、C 相互独立，判断 A-B 与 C 的补事件是否相互独立。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>A-B 与 C 的补事件相互独立。</p>
+        <p><strong>解析：</strong>相互独立事件的补事件及有限交仍保持相应独立关系。</p>
+        <ol><li>A-B=A∩<span class="overline">B</span>。</li><li>P((A∩<span class="overline">B</span>)∩<span class="overline">C</span>)=P(A)P(<span class="overline">B</span>)P(<span class="overline">C</span>)。</li><li>P(A∩<span class="overline">B</span>)=P(A)P(<span class="overline">B</span>)，因此乘积关系成立。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="文字转集合/样本空间">
+      <div class="qhead">
+        <div>
+          <h3>Q032 文字转集合/样本空间</h3>
+          <p class="meta">第一章 随机事件与概率/1.5 事件的相互独立性.pdf - page 7</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>文字转集合/样本空间</span>
+        </div>
+      </div>
+      <div class="question-text">甲、乙两人同时向同一目标射击一次，甲击中的概率是0.8，乙击中的概率是0.6。求一次射击中目标被击中的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>0.92。</p>
+        <p><strong>解析：</strong>目标被击中是甲中或乙中，独立时用补事件最快。</p>
+        <ol><li>P(目标被击中)=1-P(甲不中且乙不中)=1-(0.2)(0.4)=0.92。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q033 独立性/二项模型</h3>
+          <p class="meta">第一章 随机事件与概率/1.5 事件的相互独立性.pdf - page 9</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">一名射手连续向目标射击5次，每次命中率均为 p(0&lt;p&lt;1)，且每次命中与否相互独立。求恰好命中3次的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>10p<sup>3</sup>(1-p)<sup>2</sup>。</p>
+        <p><strong>解析：</strong>5 次独立射击，恰好命中 3 次服从二项分布。</p>
+        <ol><li>P=C(5,3)p<sup>3</sup>(1-p)<sup>2</sup>=10p<sup>3</sup>(1-p)<sup>2</sup>。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第一章 随机事件与概率" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q034 独立性/二项模型</h3>
+          <p class="meta">第一章 随机事件与概率/1.5 事件的相互独立性.pdf - page 10</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第一章 随机事件与概率</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">设有6个白球和4个红球混合后放入袋中，从这10球中任意取5球。求在有放回的情况下，这5个球中恰有3个白球的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>216/625。</p>
+        <p><strong>解析：</strong>有放回抽取等价于 5 次独立试验，白球概率 6/10。</p>
+        <ol><li>P=C(5,3)(0.6)<sup>3</sup>(0.4)<sup>2</sup>=216/625。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="第二章 随机变量及其分布"><h2>第二章 随机变量及其分布 <small>13 题</small></h2>
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q037 分布函数/密度积分</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布 （一）.pdf - page 8</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">已知随机变量 X 的分布函数如课件页图所示，求：<br>（1）确定常数 c；<br>（2）求事件 A={|X|&gt;2} 的概率。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q037.png" alt="Q037 题目原页截图（表格/公式核对）"><figcaption>Q037 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>c=1；P(|X|&gt;2)=e<sup>-2</sup>。</p>
+        <p><strong>解析：</strong>分布函数右端极限为 1，且在 0 处右连续。</p>
+        <ol><li>当 x→∞ 时 F(x)→c，所以 c=1。</li><li>X 的取值非负，P(|X|&gt;2)=P(X&gt;2)=1-F(2)。</li><li>F(2)=1-e<sup>-2</sup>，所以 P(|X|&gt;2)=e<sup>-2</sup>。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q038 分布函数/密度积分</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布 （一）.pdf - page 10</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">掷一枚均匀硬币三次，以 X 表示出现正面的次数，求 X 的分布列和分布函数。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>X 的分布列为 1/8、3/8、3/8、1/8；分布函数见解析。</p>
+        <p><strong>解析：</strong>X 表示三次掷硬币中正面次数，因此 X~B(3,1/2)。</p>
+        <ol><li>分布列：P(X=0)=1/8，P(X=1)=3/8，P(X=2)=3/8，P(X=3)=1/8。</li><li>分布函数：x&lt;0 为 0；0≤x&lt;1 为 1/8；1≤x&lt;2 为 1/2；2≤x&lt;3 为 7/8；x≥3 为 1。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q039 分布函数/密度积分</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布 （一）.pdf - page 11</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">已知离散型随机变量 X 的分布函数如课件页图所示，求 X 的分布列。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q039.png" alt="Q039 题目原页截图（表格/公式核对）"><figcaption>Q039 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>P(X=-1)=0.1，P(X=0)=0.3，P(X=1)=0.4，P(X=2)=0.2。</p>
+        <p><strong>解析：</strong>离散型变量的概率等于分布函数在跳点处的跳跃量。</p>
+        <ol><li>在 x=-1 处跳跃 0.1，所以 P(X=-1)=0.1。</li><li>在 x=0 处跳跃 0.4-0.1=0.3。</li><li>在 x=1 处跳跃 0.8-0.4=0.4。</li><li>在 x=2 处跳跃 1-0.8=0.2。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q040 独立性/二项模型</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布 （一）.pdf - page 14</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">某人进行射击，每次射击的命中率为0.02，独立射击400次，求至少击中两次的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>1-0.98<sup>400</sup>-8×0.98<sup>399</sup>，约 0.99696。</p>
+        <p><strong>解析：</strong>射击次数固定且独立，命中次数 X~B(400,0.02)。</p>
+        <ol><li>P(X≥2)=1-P(X=0)-P(X=1)。</li><li>精确式：1-0.98<sup>400</sup>-400×0.02×0.98<sup>399</sup>。</li><li>也可用泊松近似 λ=8：1-e<sup>-8</sup>(1+8)。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q041 独立性/二项模型</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布 （一）.pdf - page 15</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">从某大学到火车站途中有6个交通岗，各交通岗是否遇到红灯相互独立，且遇到红灯的概率都是1/3。<br>（1）设 X 为汽车行驶途中遇到的红灯数，求 X 的分布列；<br>（2）求汽车行驶途中至少遇到5次红灯的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>分布列见解析；至少 5 次红灯的概率为 13/729。</p>
+        <p><strong>解析：</strong>遇到红灯数 X~B(6,1/3)。</p>
+        <ol><li>分布列：P(X=k)=C(6,k)(1/3)<sup>k</sup>(2/3)<sup>6-k</sup>，k=0,1,...,6。</li><li>P(X≥5)=C(6,5)(1/3)<sup>5</sup>(2/3)+(1/3)<sup>6</sup>=13/729。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="常见分布识别">
+      <div class="qhead">
+        <div>
+          <h3>Q043 常见分布识别</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布 （一）.pdf - page 18</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>常见分布识别</span>
+        </div>
+      </div>
+      <div class="question-text">下列随机变量 X 服从二项分布的是哪一项？选项见课件页图。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q043.png" alt="Q043 题目原页截图（表格/公式核对）"><figcaption>Q043 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>D。</p>
+        <p><strong>解析：</strong>二项分布必须形如 C(n,k)p<sup>k</sup>(1-p)<sup>n-k</sup>，且 k 的范围覆盖 0 到 n。</p>
+        <ol><li>A 的取值范围缺少 k=0。</li><li>B 是泊松分布形式。</li><li>C 中 0.6 与 0.5 不互补，且取值范围也不完整。</li><li>D 符合 B(20,0.98) 的形式。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="常见分布识别">
+      <div class="qhead">
+        <div>
+          <h3>Q044 常见分布识别</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布 （一）.pdf - page 19</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>常见分布识别</span>
+        </div>
+      </div>
+      <div class="question-text">设随机变量 X 服从泊松分布，且 P(X=1)=P(X=2)，求 P(X=4)。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>2e<sup>-2</sup>/3。</p>
+        <p><strong>解析：</strong>泊松分布 P(X=k)=e<sup>-λ</sup> λ<sup>k</sup>/k!。</p>
+        <ol><li>P(1)=P(2) 给出 λ=2。</li><li>P(4)=e<sup>-2</sup>·2<sup>4</sup>/4!=2e<sup>-2</sup>/3。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q046 概念辨析/计算</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布 （一）.pdf - page 21</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">计算机硬件公司制造某种特殊型号的微型芯片，次品率为0.1%，各芯片成为次品相互独立。求1000只产品中至少有2只次品的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>约 0.2642。</p>
+        <p><strong>解析：</strong>X~B(1000,0.001)，可用泊松 λ=np=1 近似。</p>
+        <ol><li>P(X≥2)=1-P(0)-P(1)≈1-e<sup>-1</sup>-e<sup>-1</sup>=1-2/e≈0.2642。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q047 分布函数/密度积分</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布(二）.pdf - page 6</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">设随机变量 X 的密度函数如课件页图所示，求：<br>（1）确定常数 k；<br>（2）求 X 的分布函数 F(x)；<br>（3）P(1&lt;X≤7/2)。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q047.png" alt="Q047 题目原页截图（表格/公式核对）"><figcaption>Q047 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>k=1/6；F(x) 见解析；P(1&lt;X≤7/2)=41/48。</p>
+        <p><strong>解析：</strong>先用密度积分为 1 求 k，再分段积分求 F(x)。</p>
+        <ol><li>归一化：<span class="math-int"><span class="int-upper">3</span><span class="int-symbol">∫</span><span class="int-lower">0</span></span> kx dx + <span class="math-int"><span class="int-upper">4</span><span class="int-symbol">∫</span><span class="int-lower">3</span></span>(2-x/2) dx = 1，得 k=1/6。</li><li>F(x)=0(x&lt;0)；F(x)=x<sup>2</sup>/12(0≤x&lt;3)；F(x)=2x-x<sup>2</sup>/4-3(3≤x≤4)；F(x)=1(x&gt;4)。</li><li>P(1&lt;X≤7/2)=F(7/2)-F(1)=15/16-1/12=41/48。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q048 分布函数/密度积分</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布(二）.pdf - page 9</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">设电阻值 R 是一个随机变量，均匀分布在900～1100Ω。求 R 的概率密度及 R 落在950～1050Ω的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>f(r)=1/200；概率 0.5。</p>
+        <p><strong>解析：</strong>均匀分布在 [900,1100]。</p>
+        <ol><li>密度 f(r)=1/(1100-900)=1/200，900≤r≤1100。</li><li>P(950&lt;R&lt;1050)=(1050-950)/(1100-900)=1/2。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q049 概念辨析/计算</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布(二）.pdf - page 11</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">一种电池寿命 X（单位：小时）服从参数 θ=200 的指数分布。若一只电池已经使用80小时，求它至少还能使用100小时的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>e<sup>-0.5</sup>。</p>
+        <p><strong>解析：</strong>指数分布无记忆性。</p>
+        <ol><li>P(X&gt;180|X&gt;80)=P(X&gt;100)=e<sup>-100/200</sup>=e<sup>-0.5</sup>。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="常见分布识别">
+      <div class="qhead">
+        <div>
+          <h3>Q050 常见分布识别</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布(二）.pdf - page 17</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>常见分布识别</span>
+        </div>
+      </div>
+      <div class="question-text">若 X~N(3,9)，求 P(X≤6) 和 P(0&lt;X&lt;6)。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>0.8413；0.6826。</p>
+        <p><strong>解析：</strong>X~N(3,9)，标准差 σ=3。</p>
+        <ol><li>P(X≤6)=Φ((6-3)/3)=Φ(1)≈0.8413。</li><li>P(0&lt;X&lt;6)=Φ(1)-Φ(-1)=2Φ(1)-1≈0.6826。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q053 分布函数/密度积分</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布(二）.pdf - page 23</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">设连续型随机变量 X 的密度函数为 f<sub>X</sub>(x)=2x(0&lt;x&lt;1)，求 Y=X<sup>2</sup>+1 的密度函数。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>f<sub>Y</sub>(y)=1, 1&lt;y&lt;2；其他为 0。</p>
+        <p><strong>解析：</strong>令 Y=X<sup>2</sup>+1，X∈(0,1)，所以 Y∈(1,2)。</p>
+        <ol><li>F<sub>Y</sub>(y)=P(X<sup>2</sup>+1≤y)=P(X≤√(y-1))=<span class="math-int"><span class="int-upper">√(y-1)</span><span class="int-symbol">∫</span><span class="int-lower">0</span></span> 2x dx=y-1。</li><li>因此 f<sub>Y</sub>(y)=1，1&lt;y&lt;2；其他为 0。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="第三章 二维随机变量及其分布"><h2>第三章 二维随机变量及其分布 <small>3 题</small></h2>
+    <article class="qcard" data-kind="course" data-chapter="第三章 二维随机变量及其分布" data-skill="联合分布/边缘分布">
+      <div class="qhead">
+        <div>
+          <h3>Q054 联合分布/边缘分布</h3>
+          <p class="meta">第三章 二维随机变量及其分布/第三章 二维随机变量及其分布.pdf - page 9</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第三章 二维随机变量及其分布</span>
+          <span>联合分布/边缘分布</span>
+        </div>
+      </div>
+      <div class="question-text">设有5件产品，其中3件正品、2件次品，从中任取2次，每次1件。分别用 X、Y 表示第一次、第二次取到的正品个数。分别在有放回和无放回两种情况下，求 (X,Y) 的联合分布列与边缘分布列。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>联合分布列与边缘分布列见解析。</p>
+        <p><strong>解析：</strong>X、Y 分别表示第一次、第二次是否取到正品，取值为 0 或 1。</p>
+        <ol><li>有放回：P(1,1)=9/25，P(1,0)=6/25，P(0,1)=6/25，P(0,0)=4/25；边缘均为 P(1)=3/5，P(0)=2/5。</li><li>无放回：P(1,1)=3/10，P(1,0)=3/10，P(0,1)=3/10，P(0,0)=1/10；边缘仍均为 P(1)=3/5，P(0)=2/5。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第三章 二维随机变量及其分布" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q056 独立性/二项模型</h3>
+          <p class="meta">第三章 二维随机变量及其分布/第三章 二维随机变量及其分布.pdf - page 11</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第三章 二维随机变量及其分布</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">已知 X 与 Y 相互独立，且 (X,Y) 的联合分布列如课件页图所示，求其中 a、b 的值，并完成整个分布列表。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q056.png" alt="Q056 题目原页截图（表格/公式核对）"><figcaption>Q056 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>a=1/12，b=3/8；行边缘 1/4、3/4，列边缘 1/2、1/3、1/6。</p>
+        <p><strong>解析：</strong>利用独立性：联合概率等于行边缘概率乘列边缘概率。</p>
+        <ol><li>由第三列 1/24 与 1/8 的比例可知两行边缘概率比为 1:3，因此 p<sub>1.</sub>=1/4，p<sub>2.</sub>=3/4。</li><li>第一行：1/8+a+1/24=1/4，得 a=1/12。</li><li>第二行：b+1/4+1/8=3/4，得 b=3/8。</li><li>列边缘为 p<sub>.1</sub>=1/2，p<sub>.2</sub>=1/3，p<sub>.3</sub>=1/6。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第三章 二维随机变量及其分布" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q057 分布函数/密度积分</h3>
+          <p class="meta">第三章 二维随机变量及其分布/第三章 二维随机变量及其分布.pdf - page 15</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第三章 二维随机变量及其分布</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">设二维连续型随机变量 (X,Y) 的联合密度如课件页图所示。求：<br>（1）常数 A；<br>（2）P(Y&gt;1/2 | X&gt;Y)；<br>（3）边缘密度 f<sub>X</sub>(x) 和 f<sub>Y</sub>(y)。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q057.png" alt="Q057 题目原页截图（表格/公式核对）"><figcaption>Q057 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>A=6；条件概率 11/16；边缘密度见解析。</p>
+        <p><strong>解析：</strong>先由联合密度积分为 1 求 A，再按区域积分。</p>
+        <ol><li><span class="math-int"><span class="int-upper">1</span><span class="int-symbol">∫</span><span class="int-lower">0</span></span> <span class="math-int"><span class="int-upper">1</span><span class="int-symbol">∫</span><span class="int-lower">x<sup>2</sup></span></span> Axy dy dx = A/6=1，所以 A=6。</li><li>P(X&gt;Y)=<span class="math-int"><span class="int-upper">1</span><span class="int-symbol">∫</span><span class="int-lower">0</span></span> <span class="math-int"><span class="int-upper">x</span><span class="int-symbol">∫</span><span class="int-lower">x<sup>2</sup></span></span> 6xy dy dx=1/4。</li><li>P(Y&gt;1/2 且 X&gt;Y)=11/64，所以条件概率为 (11/64)/(1/4)=11/16。</li><li>边缘密度：f<sub>X</sub>(x)=3x(1-x<sup>4</sup>)，0&lt;x&lt;1；f<sub>Y</sub>(y)=3y<sup>2</sup>，0&lt;y&lt;1。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="第四章 随机变量的数字特征"><h2>第四章 随机变量的数字特征 <small>9 题</small></h2>
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="数字特征计算">
+      <div class="qhead">
+        <div>
+          <h3>Q058 数字特征计算</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 4</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>数字特征计算</span>
+        </div>
+      </div>
+      <div class="question-text">某医院新生儿出生时，医生根据肤色、肌肉弹性、反应敏感性等因素评分。新生儿得分 X 的分布列如课件页图所示，求 X 的数学期望 E(X)。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q058.png" alt="Q058 题目原页截图（表格/公式核对）"><figcaption>Q058 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>E(X)=7.15。</p>
+        <p><strong>解析：</strong>离散型数学期望等于取值乘概率后求和。</p>
+        <ol><li>按图中分布列计算 E(X)=Σ x p<sub>x</sub>。</li><li>E(X)=0×0.002+1×0.001+...+10×0.01=7.15。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q059 分布函数/密度积分</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 5</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">设随机变量 X~U(1,3)，求 E(X)。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>2。</p>
+        <p><strong>解析：</strong>均匀分布 U(a,b) 的期望为 (a+b)/2。</p>
+        <ol><li>X~U(1,3)，所以 E(X)=(1+3)/2=2。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="数字特征计算">
+      <div class="qhead">
+        <div>
+          <h3>Q060 数字特征计算</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 6</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>数字特征计算</span>
+        </div>
+      </div>
+      <div class="question-text">随机变量 X 的分布列如课件页图所示，求 E(3X<sup>2</sup>)。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q060.png" alt="Q060 题目原页截图（表格/公式核对）"><figcaption>Q060 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>272.7。</p>
+        <p><strong>解析：</strong>用随机变量函数的期望公式 E[g(X)]=Σg(x<sub>i</sub>)p<sub>i</sub>。</p>
+        <ol><li>E(3X<sup>2</sup>)=3×8<sup>2</sup>×0.2+3×9<sup>2</sup>×0.1+3×10<sup>2</sup>×0.7。</li><li>计算得 38.4+24.3+210=272.7。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="分布函数/密度积分">
+      <div class="qhead">
+        <div>
+          <h3>Q061 分布函数/密度积分</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 7</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>分布函数/密度积分</span>
+        </div>
+      </div>
+      <div class="question-text">设随机变量 X~U(1,3)，求 E(1/X)。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>(1/2)ln3。</p>
+        <p><strong>解析：</strong>连续型均匀分布的密度为 1/2，1&lt;x&lt;3。</p>
+        <ol><li>E(1/X)=<span class="math-int"><span class="int-upper">3</span><span class="int-symbol">∫</span><span class="int-lower">1</span></span> (1/x)(1/2) dx。</li><li>结果为 (1/2)ln3。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q063 独立性/二项模型</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 13</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">对任意两个随机变量 X 和 Y，若 E(XY)=E(X)E(Y)，则 D(X+Y)=______。并思考：E(XY)=E(X)E(Y) 与 X、Y 相互独立之间是什么关系？</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>D(X+Y)=D(X)+D(Y)；独立可推出该等式，反之不一定。</p>
+        <p><strong>解析：</strong>E(XY)=E(X)E(Y) 等价于 Cov(X,Y)=0。</p>
+        <ol><li>D(X+Y)=D(X)+D(Y)+2Cov(X,Y)。</li><li>此处 Cov(X,Y)=0，所以 D(X+Y)=D(X)+D(Y)。</li><li>X、Y 相互独立能推出 E(XY)=E(X)E(Y)，但反过来不一定成立。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q064 独立性/二项模型</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 14</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">设 X、Y 是两个相互独立的随机变量，且 X~N(1,2)，Y~N(0,1)。求 E(2X-Y+3)、D(2X-Y+3)，并判断 2X-Y+3 服从什么分布。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>E=5，D=9，分布 N(5,9)。</p>
+        <p><strong>解析：</strong>独立正态变量的线性组合仍服从正态分布。</p>
+        <ol><li>E(2X-Y+3)=2×1-0+3=5。</li><li>D(2X-Y+3)=4D(X)+D(Y)=4×2+1=9。</li><li>所以 2X-Y+3 ~ N(5,9)。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="数字特征计算">
+      <div class="qhead">
+        <div>
+          <h3>Q066 数字特征计算</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 19</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>数字特征计算</span>
+        </div>
+      </div>
+      <div class="question-text">设 D(X)、D(Y) 都不为0。若存在常数 a≠0 与 b，使 P(Y=aX+b)=1，此时 X 与 Y 的相关系数 ρ_XY 为哪一项？选项见课件页图。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q066.png" alt="Q066 题目原页截图（表格/公式核对）"><figcaption>Q066 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>C。</p>
+        <p><strong>解析：</strong>若 Y=aX+b 几乎处处成立，则完全线性相关。</p>
+        <ol><li>a&gt;0 时相关系数为 1，a&lt;0 时相关系数为 -1。题目只说 a≠0，所以选 C。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q067 独立性/二项模型</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 21</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">习题1-3见课件页图：<br>1. 两个独立随机变量 X、Y 的方差分别为4和2，求 2X-3Y 的方差。<br>2. 给定分段密度 f(x)，求 E(X) 和 D(X)。<br>3. 给定二维密度 f(x,y)，求 E(X)、E(Y)、ρ_XY、D(X+Y)。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q067.png" alt="Q067 题目原页截图（表格/公式核对）"><figcaption>Q067 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>1. 34；2. E(X)=0，D(X)=1/6；3. E(X)=E(Y)=7/6，ρ=-1/11，D(X+Y)=5/9。</p>
+        <p><strong>解析：</strong>习题 1 用方差性质；习题 2、3 用积分计算数字特征。</p>
+        <ol><li>1. D(2X-3Y)=4D(X)+9D(Y)=4×4+9×2=34。</li><li>2. 该密度关于 0 对称，E(X)=0；D(X)=E(X<sup>2</sup>)=1/6。</li><li>3. 课件答案：E(X)=7/6，E(Y)=7/6，ρ_XY=-1/11，D(X+Y)=5/9。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第四章 随机变量的数字特征" data-skill="联合分布/边缘分布">
+      <div class="qhead">
+        <div>
+          <h3>Q068 联合分布/边缘分布</h3>
+          <p class="meta">第四章 随机变量的数字特征/第四章 随机变量的数字特征.pdf - page 22</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第四章 随机变量的数字特征</span>
+          <span>联合分布/边缘分布</span>
+        </div>
+      </div>
+      <div class="question-text">习题4-7见课件页图：圆盘面积期望、D(X+Y)、Cov(X+Y,3Z)、以及由联合分布列求 Cov(X,Y)。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q068.png" alt="Q068 题目原页截图（表格/公式核对）"><figcaption>Q068 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>4. π(a<sup>2</sup>+ab+b<sup>2</sup>)/12；5. 85；6. 9；7. 1/3。</p>
+        <p><strong>解析：</strong>习题 4-7 分别对应期望、方差与协方差公式。</p>
+        <ol><li>4. 若直径 X~U(a,b)，圆盘面积 Y=πX<sup>2</sup>/4，E(Y)=π(a<sup>2</sup>+ab+b<sup>2</sup>)/12。</li><li>5. D(X+Y)=25+36+2×0.4×5×6=85。</li><li>6. Cov(X+Y,3Z)=3[Cov(X,Z)+Cov(Y,Z)]=9。</li><li>7. 课件答案：Cov(X,Y)=1/3。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="第五章 样本及抽样分布"><h2>第五章 样本及抽样分布 <small>2 题</small></h2>
+    <article class="qcard" data-kind="course" data-chapter="第五章 样本及抽样分布" data-skill="常见分布识别">
+      <div class="qhead">
+        <div>
+          <h3>Q070 常见分布识别</h3>
+          <p class="meta">第五章 样本及抽样分布/第五章 样本及抽样分布.pdf - page 11</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第五章 样本及抽样分布</span>
+          <span>常见分布识别</span>
+        </div>
+      </div>
+      <div class="question-text">例1：设总体 X~N(2,3<sup>2</sup>)，X<sub>1</sub>,...,Xn 为简单样本，判断课件页图中统计量服从的分布。<br>例2：X<sub>1</sub>,X<sub>2</sub>,X<sub>3</sub>,X<sub>4</sub> 来自 N(0,2<sup>2</sup>)，给定二次型，求 a、b 使其服从 χ<sup>2</sup>(2)。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q070.png" alt="Q070 题目原页截图（表格/公式核对）"><figcaption>Q070 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>χ<sup>2</sup>(n)；a=1/20，b=1/100。</p>
+        <p><strong>解析：</strong>正态总体样本的标准化平方和服从 χ<sup>2</sup> 分布。</p>
+        <ol><li>例1：Σ[(X<sub>i</sub>-2)<sup>2</sup> / 3<sup>2</sup>] ~ χ<sup>2</sup>(n)。</li><li>例2：X<sub>1</sub>-2X2 ~ N(0,20)，3X3-4X4 ~ N(0,100)，两项独立，所以 a=1/20，b=1/100 时和为 χ<sup>2</sup>(2)。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第五章 样本及抽样分布" data-skill="独立性/二项模型">
+      <div class="qhead">
+        <div>
+          <h3>Q072 独立性/二项模型</h3>
+          <p class="meta">第五章 样本及抽样分布/第五章 样本及抽样分布.pdf - page 14</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第五章 样本及抽样分布</span>
+          <span>独立性/二项模型</span>
+        </div>
+      </div>
+      <div class="question-text">例3：从总体 N(52,6.3<sup>2</sup>) 抽取容量36的样本，求样本均值落在50.8到53.8之间的概率。<br>例4：X 服从正态分布，E(X)=-1，E(X<sup>2</sup>)=4，判断样本均值分布，选项见课件页图。<br>例5：求总体 N(20,3) 的容量为10、15的两独立样本均值差绝对值大于0.3的概率。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q072.png" alt="Q072 题目原页截图（表格/公式核对）"><figcaption>Q072 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>0.8293；A；0.6744。</p>
+        <p><strong>解析：</strong>样本均值仍为正态分布，均值差也为正态分布。</p>
+        <ol><li>例3 课件参考答案：0.8293。</li><li>例4：E(X)=-1，D(X)=E(X<sup>2</sup>)-E(X)<sup>2</sup>=4-1=3，所以 X̄~N(-1,3/n)，选 A。</li><li>例5：两个独立样本均值差服从 N(0, 3/10+3/15)=N(0,0.5)，所求为 P(|Z|&gt;0.3/√(0.5))，课件参考答案 0.6744。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="第六章 参数估计"><h2>第六章 参数估计 <small>7 题</small></h2>
+    <article class="qcard" data-kind="course" data-chapter="第六章 参数估计" data-skill="常见分布识别">
+      <div class="qhead">
+        <div>
+          <h3>Q074 常见分布识别</h3>
+          <p class="meta">第六章 参数估计/第六章 参数估计.pdf - page 3</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第六章 参数估计</span>
+          <span>常见分布识别</span>
+        </div>
+      </div>
+      <div class="question-text">已知某高校高数成绩成正态分布。大一有3000人参加考试，从中随机抽取100名同学，样本平均值为70分，标准差为8。试估计这所学校高数成绩的具体分布形式。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>N(70,64) 的估计形式。</p>
+        <p><strong>解析：</strong>用样本均值和样本标准差估计正态总体参数。</p>
+        <ol><li>估计 μ≈70，σ≈8，所以可写作 X≈N(70,8<sup>2</sup>)。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第六章 参数估计" data-skill="抽样分布">
+      <div class="qhead">
+        <div>
+          <h3>Q075 抽样分布</h3>
+          <p class="meta">第六章 参数估计/第六章 参数估计.pdf - page 7</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第六章 参数估计</span>
+          <span>抽样分布</span>
+        </div>
+      </div>
+      <div class="question-text">设总体 X 的分布列如课件页图所示，其中 θ 为未知参数。已知样本值 x<sub>1</sub>=1, x<sub>2</sub>=2, x<sub>3</sub>=1, x<sub>4</sub>=3, x<sub>5</sub>=3，求参数 θ 的矩估计值。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q075.png" alt="Q075 题目原页截图（表格/公式核对）"><figcaption>Q075 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>θ 的矩估计值为 1/2。</p>
+        <p><strong>解析：</strong>矩估计令样本均值等于总体均值。</p>
+        <ol><li>该分布的 E(X)=3-2θ。</li><li>样本均值为 (1+2+1+3+3)/5=2。</li><li>令 3-2θ=2，得 θ=1/2。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第六章 参数估计" data-skill="抽样分布">
+      <div class="qhead">
+        <div>
+          <h3>Q076 抽样分布</h3>
+          <p class="meta">第六章 参数估计/第六章 参数估计.pdf - page 10</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第六章 参数估计</span>
+          <span>抽样分布</span>
+        </div>
+      </div>
+      <div class="question-text">设总体 X 的分布列如课件页图所示，其中 θ 为未知参数。已知样本值 x<sub>1</sub>=1, x<sub>2</sub>=2, x<sub>3</sub>=1, x<sub>4</sub>=3, x<sub>5</sub>=3，求参数 θ 的极大似然估计值。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q076.png" alt="Q076 题目原页截图（表格/公式核对）"><figcaption>Q076 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>θ 的极大似然估计值为 1/2。</p>
+        <p><strong>解析：</strong>按样本频数写出似然函数并最大化。</p>
+        <ol><li>样本中 X=1 出现 2 次，X=2 出现 1 次，X=3 出现 2 次。</li><li>L(θ)∝(θ<sup>2</sup>)<sup>2</sup>[2θ(1-θ)][(1-θ)<sup>2</sup>]<sup>2</sup> ∝ θ<sup>5</sup>(1-θ)<sup>5</sup>。</li><li>最大点为 θ=5/(5+5)=1/2。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第六章 参数估计" data-skill="抽样分布">
+      <div class="qhead">
+        <div>
+          <h3>Q077 抽样分布</h3>
+          <p class="meta">第六章 参数估计/第六章 参数估计.pdf - page 11</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第六章 参数估计</span>
+          <span>抽样分布</span>
+        </div>
+      </div>
+      <div class="question-text">设总体 X 的分布列如课件页图所示，其中 0&lt;θ&lt;1/2。利用样本 3,1,3,0,3,1,2,3 求参数 θ 的矩估计值和极大似然估计值。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/course_pages/Q077.png" alt="Q077 题目原页截图（表格/公式核对）"><figcaption>Q077 题目原页截图（表格/公式核对）</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>矩估计 θ=1/4；极大似然估计 θ=(7-√(13))/12≈0.2829。</p>
+        <p><strong>解析：</strong>矩估计用样本均值；极大似然估计用样本频数。</p>
+        <ol><li>该分布 E(X)=3-4θ；样本均值为 (3+1+3+0+3+1+2+3)/8=2，所以矩估计 θ=1/4。</li><li>样本频数为 n0=1，n1=2，n2=1，n3=4，L(θ)∝θ<sup>6</sup>(1-θ)<sup>2</sup>(1-2θ)<sup>4</sup>。</li><li>令 d lnL/dθ=0，得 12θ<sup>2</sup>-14θ+3=0；结合 0&lt;θ&lt;1/2，取 θ=(7-√(13))/12≈0.2829。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第六章 参数估计" data-skill="常见分布识别">
+      <div class="qhead">
+        <div>
+          <h3>Q080 常见分布识别</h3>
+          <p class="meta">第六章 参数估计/第六章 参数估计.pdf - page 16</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第六章 参数估计</span>
+          <span>常见分布识别</span>
+        </div>
+      </div>
+      <div class="question-text">设灯泡寿命 X~N(μ,200<sup>2</sup>)，任取25只灯泡，样本均值为16800小时。求平均寿命 μ 的置信区间。已知 α=0.05，Φ(1.96)=0.975。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>[16721.6, 16878.4]。</p>
+        <p><strong>解析：</strong>σ 已知时用 Z 区间。</p>
+        <ol><li>题中 σ=200，n=25，x̄=16800，z<sub>0.025</sub>=1.96。</li><li>区间：x̄ ± 1.96·σ/√(n)=16800±1.96×200/5=16800±78.4。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第六章 参数估计" data-skill="常见分布识别">
+      <div class="qhead">
+        <div>
+          <h3>Q081 常见分布识别</h3>
+          <p class="meta">第六章 参数估计/第六章 参数估计.pdf - page 17</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第六章 参数估计</span>
+          <span>常见分布识别</span>
+        </div>
+      </div>
+      <div class="question-text">设灯泡寿命 X~N(μ,σ<sup>2</sup>)，任取25只灯泡，样本均值为16800小时，样本方差 S<sup>2</sup>=250<sup>2</sup>。求平均寿命 μ 的置信区间。已知 α=0.05，t<sub>0.025</sub>(24)=2.0639。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>[16696.805, 16903.195]。</p>
+        <p><strong>解析：</strong>σ 未知时用 t 区间。</p>
+        <ol><li>S=250，n=25，自由度 24，t<sub>0.025</sub>(24)=2.0639。</li><li>区间：16800±2.0639×250/5=16800±103.195。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第六章 参数估计" data-skill="常见分布识别">
+      <div class="qhead">
+        <div>
+          <h3>Q082 常见分布识别</h3>
+          <p class="meta">第六章 参数估计/第六章 参数估计.pdf - page 18</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第六章 参数估计</span>
+          <span>常见分布识别</span>
+        </div>
+      </div>
+      <div class="question-text">设灯泡寿命 X~N(μ,σ<sup>2</sup>)，任取25只灯泡，样本均值为16800小时，样本方差 S<sup>2</sup>=180<sup>2</sup>。求总体方差 σ<sup>2</sup> 的置信区间。已知 α=0.05，χ<sup>2</sup><sub>0.025</sub>(24)=39.364，χ<sup>2</sup><sub>0.975</sub>(24)=12.401。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>σ<sup>2</sup> 的置信区间约为 [19753.1, 62704.3]。</p>
+        <p><strong>解析：</strong>估计正态总体方差用 χ<sup>2</sup> 区间。</p>
+        <ol><li>n=25，S=180，df=24。</li><li>区间：[(n-1)S<sup>2</sup>/χ<sup>2</sup><sub>0.025</sub>(24), (n-1)S<sup>2</sup>/χ<sup>2</sup><sub>0.975</sub>(24)]。</li><li>代入：24×180<sup>2</sup>/39.364≈19753.1，24×180<sup>2</sup>/12.401≈62704.3。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="作业一"><h2>作业一 <small>4 题</small></h2>
+    <article class="qcard" data-kind="homework" data-chapter="作业一" data-skill="概率性质与条件概率">
+      <div class="qhead">
+        <div>
+          <h3>作业一 1. 计算</h3>
+          <p class="meta">作业一.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业一</span>
+          <span>概率性质与条件概率</span>
+        </div>
+      </div>
+      <div class="question-text">（1）已知P(A)=1/2, P(B)=1/3, P(B|A)=2/3, 求P(A|B);<br>（2）已知P(<span class="overline">A</span>)=0.3, P(B)=0.4, P(<span class="overline">A</span>∩B)=0.5, 求P(B|A∪<span class="overline">B</span>);<br>（3）已知P(A)=1/4, P(B|A)=1/3, P(A|B)=1/2, 求P(A+B).</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>（1）1；（3）1/3；（2）按原卷补事件符号代入条件概率公式。</p>
+        <p><strong>解析：</strong>逐小题先由条件概率公式求交事件，再反推目标概率。</p>
+        <ol><li>（1）P(AB)=P(B|A)P(A)=2/3×1/2=1/3，所以 P(A|B)=P(AB)/P(B)=1。</li><li>（2）原卷公式含补事件符号，Word 提取可能丢失上划线；按原卷补事件关系用 P(B|C)=P(BC)/P(C) 处理，做题时请结合原卷符号核对。</li><li>（3）P(AB)=P(B|A)P(A)=1/12；又 P(A|B)=1/2，所以 P(B)=P(AB)/P(A|B)=1/6；P(A∪B)=P(A)+P(B)-P(AB)=1/3。</li></ol>
+        <p class="answer-note">第（2）小题 Word 公式中的上划线符号提取不稳定，新题集保留为文字提示，避免把错误符号当答案。</p>
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="homework" data-chapter="作业一" data-skill="全概率与贝叶斯">
+      <div class="qhead">
+        <div>
+          <h3>作业一 2. 仓库三厂产品</h3>
+          <p class="meta">作业一.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业一</span>
+          <span>全概率与贝叶斯</span>
+        </div>
+      </div>
+      <div class="question-text">2. 设一仓库中有10箱同种规格的产品，其中由甲、乙、丙三厂生产的分别有5箱，3箱，2箱，三厂的次品率依次为0.1，0.2，0.3。从这10箱产品中任取一箱，再从这箱中任意取一件产品。求（1）取得正品的概率；（2）取得的正品是甲厂的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>P(正品)=0.83；P(甲厂|正品)=45/83≈0.5422。</p>
+        <p><strong>解析：</strong>先算抽到正品的全概率，再用贝叶斯公式算正品来自甲厂的概率。</p>
+        <ol><li>P(甲)=5/10，P(乙)=3/10，P(丙)=2/10。</li><li>三厂正品率分别为 0.9、0.8、0.7。</li><li>P(正品)=0.5×0.9+0.3×0.8+0.2×0.7=0.83。</li><li>P(甲|正品)=0.5×0.9/0.83=45/83≈0.5422。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="homework" data-chapter="作业一" data-skill="密度与分布函数">
+      <div class="qhead">
+        <div>
+          <h3>作业一 3. 分段密度函数</h3>
+          <p class="meta">作业一.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业一</span>
+          <span>密度与分布函数</span>
+        </div>
+      </div>
+      <div class="question-text">3. 设随机变量X的密度函数为f(x)=1/3 (0&lt;x&lt;1), 2/9 (3&lt;x&lt;6), 0 (其他)，求（1）F(x); （2）P((1)/(2)&lt;X≤4)</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>F(x) 分段如上；P(1/2&lt;X≤4)=7/18。</p>
+        <p><strong>解析：</strong>对密度函数分段积分得到 F(x)，再积分求 P(1/2&lt;X≤4)。</p>
+        <ol><li>当 x≤0，F(x)=0。</li><li>0&lt;x&lt;1：F(x)=<span class="math-int"><span class="int-upper">x</span><span class="int-symbol">∫</span><span class="int-lower">0</span></span> 1/3 dt=x/3。</li><li>1≤x≤3：F(x)=1/3。</li><li>3&lt;x&lt;6：F(x)=1/3+<span class="math-int"><span class="int-upper">x</span><span class="int-symbol">∫</span><span class="int-lower">3</span></span> 2/9 dt=(2x-3)/9。</li><li>x≥6：F(x)=1。</li><li>P(1/2&lt;X≤4)=F(4)-F(1/2)=5/9-1/6=7/18。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="homework" data-chapter="作业一" data-skill="正态分布应用">
+      <div class="qhead">
+        <div>
+          <h3>作业一 4. 成年男子身高</h3>
+          <p class="meta">作业一.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业一</span>
+          <span>正态分布应用</span>
+        </div>
+      </div>
+      <div class="question-text">4. 设成年男子身高服从正态分布N(170, 10<sup>2</sup>)(单位：厘米)<br>（1）求成年男子身高大于160厘米的概率；<br>（2）公共汽车的车门应设计多高，才能使成年男子上车时碰头的概率不大于5%？<br>（3）在这个设计之下，求100个成年男子上车时，至少有2个人碰头的概率。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>0.8413；约 186.45 cm；约 0.9629。</p>
+        <p><strong>解析：</strong>标准化 X~N(170,10<sup>2</sup>)，再用正态分布和二项分布。</p>
+        <ol><li>（1）P(X&gt;160)=P(Z&gt;-1)=Φ(1)≈0.8413。</li><li>（2）要求 P(X&gt;h)≤0.05，即 P(X≤h)≥0.95，所以 h=170+1.645×10=186.45 cm。</li><li>（3）此设计下单人碰头概率 p=0.05，100 人至少 2 人碰头：1-P(0)-P(1)=1-0.95<sup>100</sup>-100×0.05×0.95<sup>99</sup>≈0.9629。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="作业二"><h2>作业二 <small>4 题</small></h2>
+    <article class="qcard" data-kind="homework" data-chapter="作业二" data-skill="线性组合的期望与方差">
+      <div class="qhead">
+        <div>
+          <h3>作业二 1. 线性组合</h3>
+          <p class="meta">作业二.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业二</span>
+          <span>线性组合的期望与方差</span>
+        </div>
+      </div>
+      <div class="question-text">设随机变量X1, X<sup>2</sup>, X<sub>3</sub>, X4相互独立，且有E(X<sub>i</sub>)=i, D(X<sub>i</sub>)=5- i, i =1, 2, 3, 4 。设<br>Y=2X1-X<sup>2</sup>+ 3X3-(1)/(2)X<sub>4</sub>, 求E(Y), D(Y).</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>E(Y)=7，D(Y)=149/4。</p>
+        <p><strong>解析：</strong>期望按系数线性相加，方差因相互独立按系数平方相加。</p>
+        <ol><li>E(X<sub>i</sub>)=i，D(X<sub>i</sub>)=5-i。</li><li>E(Y)=2E(X<sub>1</sub>)-E(X<sub>2</sub>)+3E(X<sub>3</sub>)-1/2E(X<sub>4</sub>)=2×1-2+3×3-2=7。</li><li>D(Y)=2<sup>2</sup>D(X<sub>1</sub>)+(-1)<sup>2</sup>D(X<sub>2</sub>)+3<sup>2</sup>D(X<sub>3</sub>)+(-1/2)<sup>2</sup>D(X<sub>4</sub>)。</li><li>D(X<sub>1</sub>)=4，D(X<sub>2</sub>)=3，D(X<sub>3</sub>)=2，D(X<sub>4</sub>)=1，所以 D(Y)=16+3+18+1/4=149/4。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="homework" data-chapter="作业二" data-skill="联合分布列">
+      <div class="qhead">
+        <div>
+          <h3>作业二 2. 开关抽样联合分布</h3>
+          <p class="meta">作业二.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业二</span>
+          <span>联合分布列</span>
+        </div>
+      </div>
+      <div class="question-text">在一箱子中装有12只开关，其中2只是次品，从箱子中取两次，每次任取一只，考虑2种试验：（1）放回抽样；（2）不放回抽样。定义随机变量X, Y<br>X=0, 第一次取出的是正品 1, 第一次取出的是次品<br>Y=0, 第二次取出的是正品 1, 第二次取出的是次品<br>分别就（1）（2）两种情况，写出X和Y的联合分布列。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>放回：[[25/36,5/36],[5/36,1/36]]；不放回：[[15/22,5/33],[5/33,1/66]]。</p>
+        <p><strong>解析：</strong>X、Y 分别表示两次是否取到次品。放回时两次独立；不放回时第二次概率受第一次影响。</p>
+        <ol><li>放回：P(X=0)=10/12，P(X=1)=2/12，且 X、Y 独立。表：p00=25/36，p01=5/36，p10=5/36，p11=1/36。</li><li>不放回：p00=(10/12)(9/11)=15/22；p01=(10/12)(2/11)=5/33；p10=(2/12)(10/11)=5/33；p11=(2/12)(1/11)=1/66。</li><li>两张表的四个概率都应加和为 1。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="homework" data-chapter="作业二" data-skill="随机变量函数的期望">
+      <div class="qhead">
+        <div>
+          <h3>作业二 3. 检波器输出电压均值</h3>
+          <p class="meta">作业二.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业二</span>
+          <span>随机变量函数的期望</span>
+        </div>
+      </div>
+      <div class="question-text">设电压（以V计）X~N(0, 9)，将电压施加于一检波器，其输出电压为Y=5X<sup>2</sup>, 求输出电压的均值。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>输出电压均值为 45。</p>
+        <p><strong>解析：</strong>不需要先求 Y 的分布，直接用 E(Y)=E(5X<sup>2</sup>)。</p>
+        <ol><li>X~N(0,9)，所以 E(X)=0，D(X)=9。</li><li>E(X<sup>2</sup>)=D(X)+[E(X)]<sup>2</sup>=9。</li><li>E(Y)=5E(X<sup>2</sup>)=45。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="homework" data-chapter="作业二" data-skill="不相关与不独立">
+      <div class="qhead">
+        <div>
+          <h3>作业二 4. 不相关但不独立</h3>
+          <p class="meta">作业二.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业二</span>
+          <span>不相关与不独立</span>
+        </div>
+      </div>
+      <div class="question-text">设随机变量X与Y的分布列为<br>试验证X和Y是不相关的，但X和Y不是相互独立的。</div>
+      <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
+<figure><img src="assets/作业二-不相关但不独立分布列.png" alt="作业二第4题联合分布列图"><figcaption>作业二第4题联合分布列图</figcaption></figure>
+</details>
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>Cov(X,Y)=0，不相关；但 P(X=0,Y=0)≠P(X=0)P(Y=0)，所以不独立。</p>
+        <p><strong>解析：</strong>由图可读出 8 个格子概率为 1/8，中心 (0,0) 为 0。</p>
+        <ol><li>边缘分布：X=-1,0,1 的概率均为 3/8,1/4,3/8；Y 同理。</li><li>E(X)=E(Y)=0。</li><li>E(XY) 为四个角贡献：1/8-1/8-1/8+1/8=0，所以 Cov(X,Y)=0，X 与 Y 不相关。</li><li>但 P(X=0,Y=0)=0，而 P(X=0)P(Y=0)=1/4×1/4=1/16，不相等，所以不独立。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="作业三"><h2>作业三 <small>3 题</small></h2>
+    <article class="qcard" data-kind="homework" data-chapter="作业三" data-skill="矩估计与极大似然估计">
+      <div class="qhead">
+        <div>
+          <h3>作业三 1. 参数 θ 的估计</h3>
+          <p class="meta">作业三.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业三</span>
+          <span>矩估计与极大似然估计</span>
+        </div>
+      </div>
+      <div class="question-text">设总体X的分布列为<br>X | 0 | 1 | 2 | 3<br>Pk | θ2 | 2 θ(1- θ) | θ2 | 1-2θ<br>其中θ（0&lt;θ&lt;0.5）是未知参数，试利用总体X的如下样本量<br>3，1，3，0，3，1，2，3<br>求参数θ的矩估计值和极大似然估计值。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>矩估计 θ̂=1/4；极大似然估计 θ̂=2/7。</p>
+        <p><strong>解析：</strong>样本为 3,1,3,0,3,1,2,3，样本均值为 2。</p>
+        <ol><li>总体分布：P(0)=θ<sup>2</sup>，P(1)=2θ(1-θ)，P(2)=θ<sup>2</sup>，P(3)=1-2θ。</li><li>E(X)=0·θ<sup>2</sup>+1·2θ(1-θ)+2θ<sup>2</sup>+3(1-2θ)=3-4θ。</li><li>矩估计：令 3-4θ=2，得 θ=1/4。</li><li>样本中 0 出现 1 次，1 出现 2 次，2 出现 1 次，3 出现 4 次。</li><li>L(θ)=(θ<sup>2</sup>)<sup>1</sup>[2θ(1-θ)]<sup>2</sup>(θ<sup>2</sup>)<sup>1</sup>(1-2θ)<sup>4</sup>=4θ<sup>8</sup>(1-θ)<sup>2</sup>(1-2θ)<sup>4</sup>。</li><li>lnL 求导：8/θ-2/(1-θ)-8/(1-2θ)=0，解得 θ=2/7，且在 (0,0.5) 内为最大点。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="homework" data-chapter="作业三" data-skill="方差假设检验">
+      <div class="qhead">
+        <div>
+          <h3>作业三 2. 电池寿命波动性检验</h3>
+          <p class="meta">作业三.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业三</span>
+          <span>方差假设检验</span>
+        </div>
+      </div>
+      <div class="question-text">某厂生产的某种型号的电池，其寿命（以h计）长期以来服从方差 σ<sup>2</sup>=5000的正态分布。现有一批这种电池，从它的生产情况看，寿命的波动性有所改变，现随机取26只电池，测出其寿命的样本方差S<sup>2</sup>=9200, 问在显著性水平α=0.05下，根据这一数据能否推断这批电池的寿命的波动性较以往有显著变化？（查表知χ<sup>2</sup><sub>0.025</sub>(25)=40.646；χ<sup>2</sup><sub>0.975</sub>(25)=13.120）</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>拒绝 H0，可认为这批电池寿命波动性较以往有显著变化。</p>
+        <p><strong>解析：</strong>这是正态总体方差的双侧 χ<sup>2</sup> 检验。</p>
+        <ol><li>H0: σ<sup>2</sup>=5000；H1: σ<sup>2</sup>≠5000。</li><li>n=26，S<sup>2</sup>=9200，自由度 25。</li><li>检验统计量 χ<sup>2</sup>=(n-1)S<sup>2</sup>/σ0<sup>2</sup>=25×9200/5000=46。</li><li>双侧 α=0.05，拒绝域 χ<sup>2</sup>&lt;χ<sup>2</sup><sub>0.975</sub>(25)=13.120 或 χ<sup>2</sup>&gt;χ<sup>2</sup><sub>0.025</sub>(25)=40.646。</li><li>46&gt;40.646，落入拒绝域。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="homework" data-chapter="作业三" data-skill="正态总体均值置信区间">
+      <div class="qhead">
+        <div>
+          <h3>作业三 3. 清漆干燥时间</h3>
+          <p class="meta">作业三.docx</p>
+        </div>
+        <div class="tags">
+          <span>作业</span>
+          <span>作业三</span>
+          <span>正态总体均值置信区间</span>
+        </div>
+      </div>
+      <div class="question-text">设某种清漆的9个样品，其干燥时间（以h计）分别为<br>6，5.7，5.8，6.5，7.0，6.3，5.6，6.1，5<br>其干燥时间总体服从正态分布N(μ, σ<sup>2</sup>), 求μ的置信水平为0.95的置信区间，（1）若由以往经验知σ=0.6（h）；（2）若σ为未知。（查表知Z<sub>0.025</sub>=1.96, t<sub>0.025</sub>(8)=2.3060）</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>σ 已知：[⁠5.6080, 6.3920⁠]；σ 未知：[⁠5.5584, 6.4416⁠]。</p>
+        <p><strong>解析：</strong>先算样本均值；σ 已知用 Z 区间，σ 未知用 t 区间。</p>
+        <ol><li>样本均值 x̄=6.0000。</li><li>（1）σ=0.6 已知：x̄±1.96×0.6/√(9)=6.0000±0.3920，区间 [5.6080, 6.3920]。</li><li>（2）σ 未知：样本标准差 S=0.5745，df=8，t<sub>0.025</sub>(8)=2.3060。</li><li>区间 x̄±2.3060×S/√(9)=6.0000±0.4416，即 [5.5584, 6.4416]。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section>
+</main>
+<script>
+const search = document.querySelector('#search');
+const kind = document.querySelector('#kind');
+const chapter = document.querySelector('#chapter');
+const skill = document.querySelector('#skill');
+const cards = [...document.querySelectorAll('.qcard')];
+const count = document.querySelector('#count');
+function applyFilters() {
+  const q = search.value.trim().toLowerCase();
+  const k = kind.value;
+  const c = chapter.value;
+  const s = skill.value;
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    const okQ = !q || text.includes(q);
+    const okK = !k || card.dataset.kind === k;
+    const okC = !c || card.dataset.chapter === c;
+    const okS = !s || card.dataset.skill === s;
+    const show = okQ && okK && okC && okS;
+    card.classList.toggle('hidden', !show);
+    if (show) visible += 1;
+  });
+  count.textContent = visible + ' / ' + cards.length;
+}
+document.querySelector('#openAnswers').addEventListener('click', () => {
+  document.querySelectorAll('.qcard:not(.hidden) details.answer').forEach(d => d.open = true);
+});
+document.querySelector('#closeAnswers').addEventListener('click', () => {
+  document.querySelectorAll('details.answer').forEach(d => d.open = false);
+});
+search.addEventListener('input', applyFilters);
+kind.addEventListener('change', applyFilters);
+chapter.addEventListener('change', applyFilters);
+skill.addEventListener('change', applyFilters);
+applyFilters();
+</script>
+</body>
+</html>
