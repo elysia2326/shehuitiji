@@ -192,9 +192,9 @@
     <h1>课件原题 + 作业复习题集</h1>
     <p class="lede">只整理课件中的例题、练习、习题页和三份作业原题；每题下方都有可展开/收起的答案解析。部分课件公式由 PDF 文本层抽取，遇到表格或复杂公式时以来源 PDF 页为准核对。</p>
     <div class="summary">
-      <span class="pill">课件原题 59 题</span>
+      <span class="pill">课件原题 63 题</span>
       <span class="pill">作业原题 11 题</span>
-      <span class="pill">总题量 70 题</span>
+      <span class="pill">总题量 74 题</span>
       <span class="pill">UTF-8 正常编码</span>
     </div>
   </header>
@@ -213,6 +213,7 @@
 <option value="第四章 随机变量的数字特征">第四章 随机变量的数字特征</option>
 <option value="第五章 样本及抽样分布">第五章 样本及抽样分布</option>
 <option value="第六章 参数估计">第六章 参数估计</option>
+<option value="第七章 假设检验">第七章 假设检验</option>
 <option value="作业一">作业一</option>
 <option value="作业二">作业二</option>
 <option value="作业三">作业三</option>
@@ -232,7 +233,9 @@
 <option value="概念辨析/计算">概念辨析/计算</option>
 <option value="概率性质与条件概率">概率性质与条件概率</option>
 <option value="正态分布应用">正态分布应用</option>
+<option value="正态总体均值假设检验">正态总体均值假设检验</option>
 <option value="正态总体均值置信区间">正态总体均值置信区间</option>
+<option value="正态总体方差假设检验">正态总体方差假设检验</option>
 <option value="独立性/二项模型">独立性/二项模型</option>
 <option value="矩估计与极大似然估计">矩估计与极大似然估计</option>
 <option value="线性组合的期望与方差">线性组合的期望与方差</option>
@@ -285,7 +288,7 @@
           <span>文字转集合/样本空间</span>
         </div>
       </div>
-      <div class="question-text">甲、乙、丙三位射手向同一目标各射击一次，设 A、B、C 分别代表甲、乙、丙命中目标事件。<br>（1）用 A、B、C 表示下列事件：①目标被击中，即至少有一人击中目标；②目标被击中一次。<br>（2）用文字叙述下列事件：①AB+AC+BC；②A+B；③AB。</div>
+      <div class="question-text">甲、乙、丙三位射手向同一目标各射击一次，设 A、B、C 分别代表甲、乙、丙命中目标事件。<br>（1）用 A、B、C 表示下列事件：①目标被击中，即至少有一人击中目标；②目标被击中一次。<br>（2）用文字叙述下列事件：①AB+AC+BC；②<span class="overline">A</span>+<span class="overline">B</span>；③A<span class="overline">B</span>。</div>
       
       
     <details class="answer">
@@ -341,7 +344,7 @@
           <span>文字转集合/样本空间</span>
         </div>
       </div>
-      <div class="question-text">（1）设事件 A 与 B 的概率分别为 1/2 和 1/3，试求下列三种情况下 P(A-B) 的值：①AB=∅；②B⊂A；③P(AB)=1/4。<br>（2）已知 P(A)=0.5，P(B)=0.4，P(A-B)=0.3，求 P(<span class="overline">A</span>∪<span class="overline">B</span>) 和 P(A∪<span class="overline">B</span>)。<br>（3）设 A、B、C 为三个事件，P(A)=P(B)=P(C)=1/4，P(AB)=P(BC)=1/8，P(AC)=0，求 A、B、C 都不发生的概率。<br>（4）已知 A、B 满足 P(AB)=P(<span class="overline">A</span>∩<span class="overline">B</span>)，且 P(A)=0.4，求 P(B)。</div>
+      <div class="question-text">（1）设事件 A 与 B 的概率分别为 1/2 和 1/3，试求下列三种情况下 P(A-B) 的值：①AB=∅；②B⊂A；③P(AB)=1/4。<br>（2）已知 P(A)=0.5，P(B)=0.4，P(A-B)=0.3，求 P(<span class="overline">A</span>∪<span class="overline">B</span>) 和 P(<span class="overline">A∪B</span>)。<br>（3）设 A、B、C 为三个事件，P(A)=P(B)=P(C)=1/4，P(AB)=P(BC)=1/8，P(AC)=0，求 A、B、C 都不发生的概率。<br>（4）已知 A、B 满足 P(AB)=P(<span class="overline">A</span>∩<span class="overline">B</span>)，且 P(A)=0.4，求 P(B)。</div>
       
       
     <details class="answer">
@@ -943,7 +946,7 @@
     </details>
     
     </article>
-    </section><section class="chapter" id="第二章 随机变量及其分布"><h2>第二章 随机变量及其分布 <small>13 题</small></h2>
+    </section><section class="chapter" id="第二章 随机变量及其分布"><h2>第二章 随机变量及其分布 <small>14 题</small></h2>
     <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="分布函数/密度积分">
       <div class="qhead">
         <div>
@@ -1281,6 +1284,34 @@
         <p><strong>答案：</strong>0.8413；0.6826。</p>
         <p><strong>解析：</strong>X~N(3,9)，标准差 σ=3。</p>
         <ol><li>P(X≤6)=Φ((6-3)/3)=Φ(1)≈0.8413。</li><li>P(0&lt;X&lt;6)=Φ(1)-Φ(-1)=2Φ(1)-1≈0.6826。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第二章 随机变量及其分布" data-skill="概念辨析/计算">
+      <div class="qhead">
+        <div>
+          <h3>Q051 概念辨析/计算</h3>
+          <p class="meta">第二章 随机变量及其分布/第二章 随机变量及其分布(二）.pdf - page 21</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第二章 随机变量及其分布</span>
+          <span>概念辨析/计算</span>
+        </div>
+      </div>
+      <div class="question-text">设随机变量 X 的分布列为：<br>X：-2，-1，0，1，2<br>P<sub>k</sub>：1/5，0，2/5，1/5，1/5<br>求 Y=X<sup>2</sup> 的分布列。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>Y 的分布列：P(Y=0)=2/5，P(Y=1)=1/5，P(Y=4)=2/5。</p>
+        <p><strong>解析：</strong>把 X 的各个取值平方后合并相同的 Y 值。</p>
+        <ol><li>X=-2 或 2 时，Y=4，概率为 1/5+1/5=2/5。</li><li>X=-1 或 1 时，Y=1，概率为 0+1/5=1/5。</li><li>X=0 时，Y=0，概率为 2/5。</li></ol>
         
       </div>
     </details>
@@ -1705,7 +1736,7 @@
           <span>独立性/二项模型</span>
         </div>
       </div>
-      <div class="question-text">例3：从总体 N(52,6.3<sup>2</sup>) 抽取容量36的样本，求样本均值落在50.8到53.8之间的概率。<br>例4：X 服从正态分布，E(X)=-1，E(X<sup>2</sup>)=4，判断样本均值分布，选项见课件页图。<br>例5：求总体 N(20,3) 的容量为10、15的两独立样本均值差绝对值大于0.3的概率。</div>
+      <div class="question-text">例3：从总体 N(52, 6.3<sup>2</sup>) 中随机抽取一容量为36的样本，则样本均值 X̄ 落在50.8到53.8之间的概率是____。<br>例4：设 X 服从正态分布，E(X)=-1，E(X<sup>2</sup>)=4，X̄=1/n ∑_{i=1}^{n} X<sub>i</sub>，问 X̄ 服从下列哪种分布？<br>A. N(-1,3/n)  B. N(-1,4/n)  C. N(-1/n,4)  D. N(-1/n,3/n)<br>例5：求总体 N(20,3) 的容量为10、15的两独立样本均值差绝对值大于0.3的概率。</div>
       <details class="source-shot"><summary>查看题目原页图（核对表格/公式）</summary>
 <figure><img src="assets/course_pages/Q072.png" alt="Q072 题目原页截图（表格/公式核对）"><figcaption>Q072 题目原页截图（表格/公式核对）</figcaption></figure>
 </details>
@@ -1880,7 +1911,7 @@
           <span>常见分布识别</span>
         </div>
       </div>
-      <div class="question-text">设灯泡寿命 X~N(μ,σ<sup>2</sup>)，任取25只灯泡，样本均值为16800小时，样本方差 S<sup>2</sup>=250<sup>2</sup>。求平均寿命 μ 的置信区间。已知 α=0.05，t<sub>0.025</sub>(24)=2.0639。</div>
+      <div class="question-text">设灯泡寿命 X~N(μ,σ<sup>2</sup>)，现任取25只灯泡，测得样本均值 x̄=16800小时，样本方差 S<sup>2</sup>=250<sup>2</sup>，试求平均寿命 μ 的置信区间。已知 α=0.05，t<sub>0.025</sub>(24)=2.0639，t<sub>0.025</sub>(25)=2.0595。</div>
       
       
     <details class="answer">
@@ -1917,6 +1948,89 @@
         <p><strong>答案：</strong>σ<sup>2</sup> 的置信区间约为 [19753.1, 62704.3]。</p>
         <p><strong>解析：</strong>估计正态总体方差用 χ<sup>2</sup> 区间。</p>
         <ol><li>n=25，S=180，df=24。</li><li>区间：[(n-1)S<sup>2</sup>/χ<sup>2</sup><sub>0.025</sub>(24), (n-1)S<sup>2</sup>/χ<sup>2</sup><sub>0.975</sub>(24)]。</li><li>代入：24×180<sup>2</sup>/39.364≈19753.1，24×180<sup>2</sup>/12.401≈62704.3。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    </section><section class="chapter" id="第七章 假设检验"><h2>第七章 假设检验 <small>3 题</small></h2>
+    <article class="qcard" data-kind="course" data-chapter="第七章 假设检验" data-skill="正态总体均值假设检验">
+      <div class="qhead">
+        <div>
+          <h3>Q083 正态总体均值假设检验</h3>
+          <p class="meta">第七章 假设检验.pdf - page 6</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第七章 假设检验</span>
+          <span>正态总体均值假设检验</span>
+        </div>
+      </div>
+      <div class="question-text">要求一种元件使用寿命不得低于1000小时。现在某工厂从一批元件中随机抽取25件，测得其寿命的平均值为950小时，已知该种元件寿命服从标准差 σ=100小时的正态分布，问在显著性水平0.05下，判断这批元件的平均寿命是否为1000小时？Φ(1.96)=0.975。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>拒绝 H0，可认为这批元件平均寿命不是 1000 小时，且样本结果显示偏低。</p>
+        <p><strong>解析：</strong>σ 已知时用 Z 检验，按双侧检验比较统计量与 ±1.96。</p>
+        <ol><li>H0: μ=1000，H1: μ≠1000。</li><li>Z=(950-1000)/(100/√25)=-2.5。</li><li>显著性水平 0.05 的双侧临界值为 ±1.96，-2.5 落入拒绝域。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第七章 假设检验" data-skill="正态总体均值假设检验">
+      <div class="qhead">
+        <div>
+          <h3>Q084 正态总体均值假设检验</h3>
+          <p class="meta">第七章 假设检验.pdf - page 7</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第七章 假设检验</span>
+          <span>正态总体均值假设检验</span>
+        </div>
+      </div>
+      <div class="question-text">设某次数学考试成绩服从正态分布，现在从考试的考生中随机地抽取36位观察其成绩，算得平均成绩为66.5分，标准差为15分。问在显著性水平0.05下，是否可以认为这次考试全体考生的平均成绩为70分？t<sub>0.025</sub>(35)=2.0301。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>不拒绝 H0，在 0.05 水平下可以认为平均成绩为 70 分。</p>
+        <p><strong>解析：</strong>σ<sup>2</sup> 未知时用 t 检验。</p>
+        <ol><li>H0: μ=70，H1: μ≠70。</li><li>t=(66.5-70)/(15/√36)=-1.4，自由度 35。</li><li>|t|=1.4&lt;2.0301，不落入拒绝域。</li></ol>
+        
+      </div>
+    </details>
+    
+    </article>
+    
+
+    <article class="qcard" data-kind="course" data-chapter="第七章 假设检验" data-skill="正态总体方差假设检验">
+      <div class="qhead">
+        <div>
+          <h3>Q085 正态总体方差假设检验</h3>
+          <p class="meta">第七章 假设检验.pdf - page 8</p>
+        </div>
+        <div class="tags">
+          <span>课件</span>
+          <span>第七章 假设检验</span>
+          <span>正态总体方差假设检验</span>
+        </div>
+      </div>
+      <div class="question-text">某工厂在生产的一批导线中取样品9根，测得样本方差 S<sup>2</sup>=0.007<sup>2</sup>。设导线总体为正态分布 N(μ, σ<sup>2</sup>)，参数 μ, σ<sup>2</sup> 均未知。问在显著性水平 α=0.05 下，能否认为这批导线的方差为0.005<sup>2</sup>？χ<sup>2</sup><sub>0.025</sub>(8)=17.53；χ<sup>2</sup><sub>0.975</sub>(8)=2.18。</div>
+      
+      
+    <details class="answer">
+      <summary>查看答案解析</summary>
+      <div class="answer-body">
+        <p><strong>答案：</strong>不拒绝 H0，在 0.05 水平下可认为方差为 0.005<sup>2</sup>。</p>
+        <p><strong>解析：</strong>正态总体方差检验使用 χ<sup>2</sup> 统计量。</p>
+        <ol><li>H0: σ<sup>2</sup>=0.005<sup>2</sup>，H1: σ<sup>2</sup>≠0.005<sup>2</sup>。</li><li>χ<sup>2</sup>=(n-1)S<sup>2</sup>/σ0<sup>2</sup>=8×0.007<sup>2</sup>/0.005<sup>2</sup>=15.68。</li><li>双侧拒绝域为 χ<sup>2</sup>&gt;17.53 或 χ<sup>2</sup>&lt;2.18；15.68 不在拒绝域。</li></ol>
         
       </div>
     </details>
